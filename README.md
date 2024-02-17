@@ -58,4 +58,4 @@ The FAST-BRIEF combination is ranked highest since it has the fastest keypoint p
 
 `cmake .. && make`
 
-`./2D_feature_tracking`.
+`./2D_feature_tracking`
