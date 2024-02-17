@@ -25,6 +25,15 @@ The faster the processing times and the larger the number of keypoints and match
 
 The FAST-BRIEF combination is ranked highest since it has the fastest keypoint processing times even while processing the most keypoints. ORB-BRIEF and SHITOMASI-BRIEF are the next best respectively. Consider that the BRIEF descriptor had one of the fastest feature description times while working with SIFT keypoints but the SIFT-BRIEF combination is still the worst ranked. This is because the SIFT feature detection process was the slowest and therefore the combination's overall processing time was slow. Also, even though the HARRIS-BRIEF combination had some of the faster processing times, it is ranked lower because of the small number of keypoints it processed. 
 
+### FAST-BRIEF Feature Matching
+![FAST-BRIEF](https://github.com/Anna-LeeMcLean/image_feature_tracking/assets/60242931/117f90b9-f512-4c0c-a1fe-25f0488ccc2e)
+
+### ORB-BRIEF Feature Matching
+![ORB-BRIEF](https://github.com/Anna-LeeMcLean/image_feature_tracking/assets/60242931/6f0d5808-2108-4463-a259-f74d78124688)
+
+### SHI-TOMASI-BRIEF Feture Matching
+![SHITOMASI-BRIEF](https://github.com/Anna-LeeMcLean/image_feature_tracking/assets/60242931/4a3c8fac-cfb5-491b-b76f-995009420aea)
+
 ## Installation Instructions
 
 ### Requirements
