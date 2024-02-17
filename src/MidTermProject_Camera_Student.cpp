@@ -46,6 +46,7 @@ int main(int argc, const char *argv[])
 
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
+        cout << endl << "----------------------------------------" << endl;
         /* LOAD IMAGE INTO BUFFER */
 
         // assemble filenames for current index
@@ -128,6 +129,7 @@ int main(int argc, const char *argv[])
             }
             keypoints.swap(vehicleKeypoints);
             cout << "NOTE: KeyPoints not on vehicle have been removed!" << endl;
+            cout << "Keypoints reduced to n= " << keypoints.size() << " keypoints." << endl;
         }
         //// EOF STUDENT ASSIGNMENT
 
@@ -163,8 +165,7 @@ int main(int argc, const char *argv[])
         //// -> BRIEF, ORB, FREAK, AKAZE, SIFT
 
         cv::Mat descriptors;
-        //string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
-        DescriptorType descriptorType = DescriptorType::SIFT;
+        DescriptorType descriptorType = DescriptorType::BRISK;      // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT
         descKeypoints(currentFrame.keypoints, currentFrame.cameraImg, descriptors, descriptorType);
         //// EOF STUDENT ASSIGNMENT
 
@@ -179,7 +180,7 @@ int main(int argc, const char *argv[])
             /* MATCH KEYPOINT DESCRIPTORS */
 
             vector<cv::DMatch> matches;
-            string matcherType = "MAT_FLANN";        // MAT_BF, MAT_FLANN
+            string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
             string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
             string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
