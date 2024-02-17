@@ -6,7 +6,7 @@ all feature detector - feature descriptor pairs and determine the best three (3)
 
 ## Detector-Descriptor Combo Camparison
 
-The table below shows the data collected while running the algorithms for different combinations of feature detectors and the BRIEF descriptor. Of all the descriptors used, the BRIEF descriptor was found to have the fastest execution time while achieving the maximum number of keypoint matches. The average times taken for feature detection and description for the ten (10) images are provided in the table for each combination. The average number of keypoints and keypoint matches are also listed. Brute Force matching (with Hamming Distance calculation) and k-nearest neighbour were used for feature matching. Since the average number of keypoints and matches are the same, it is evident that this selection of algorithms for feature matching was able to find a corresponding match for each keypoint in a subsequent image. A ratio was calculated to rank the algorithm combinations. This ratio prioritizes speed in the detection and description processes while considering the number of keypoints to be processed. 
+The table below shows the data collected while running the algorithms for different combinations of feature detectors and the BRIEF descriptor. Of all the descriptors used, the BRIEF descriptor was found to have the fastest execution time while achieving the maximum number of keypoint matches. The average times taken for feature detection and description for the ten (10) images are provided in the table for each combination. The average number of keypoints and keypoint matches are also listed. Brute Force matching (with Hamming Distance calculation) and k-nearest neighbour (k=2) were used for feature matching. Since the average number of keypoints and matches are the same, it is evident that this selection of algorithms for feature matching was able to find a corresponding match for each keypoint in a subsequent image. A ratio was calculated to rank the algorithm combinations. This ratio prioritizes speed in the detection and description processes while considering the number of keypoints to be processed. 
 
 Ratio = (Average Detection Time + Average Description Time)   /   (Average # of Keypoints + Average # of Matches)
 
@@ -41,7 +41,7 @@ The FAST-BRIEF combination is ranked highest since it has the fastest keypoint p
 
 2. make >= 4.1 (Linux, Mac), 3.81 (Windows)
 
-3. OpenCV >= 4.1
+3. OpenCV >= 4.9.0
     * This must be compiled from source with the `opencv_contrib` module while using the `-D OPENCV_ENABLE_NONFREE=ON` cmake flag for testing the SIFT detector. 
 
 4. gcc/g++ >= 9.4.0
