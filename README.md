@@ -1,12 +1,10 @@
 # 2D Image Feature Tracking
 
-This project implements feature detection, description and matching using various built-in algorithms in the OPENCV library to track keypoints
-in a stream of ten (10) images. The images used are a sample from a car driving on a highway. Shi-Tomasi, Harris, BRISK, ORB, SIFT and AKAZE are implemented for feature detection while BRISK, ORB, SIFT, AKAZE, BRIEF and FREAK and implemented for feature description. The aim is to compare
-all feature detector - feature descriptor pairs and determine the best three (3) which can later on be used for collision avoidance. Feature matching using Brute Force and FLANN are both implemented with options for nearest neighbour and k-nearest neighbour matching. David Lowe's distance ratio is used for filtering out the best matches.
+This project implements feature detection, description and matching using various built-in algorithms in the OPENCV library to track keypoints in a stream of ten (10) images. The images used are a sample from a car driving on a highway. Shi-Tomasi, Harris, BRISK, ORB, SIFT and AKAZE are implemented for feature detection while BRISK, ORB, SIFT, AKAZE, BRIEF and FREAK are implemented for feature description. The aim is to compare all feature detector/descriptor pairs and determine the best three (3) which can later on be used for collision avoidance. Feature matching using Brute Force and FLANN are both implemented with options for nearest neighbour and k-nearest neighbour matching. David Lowe's distance ratio is used for filtering out the best matches.
 
 ## Detector-Descriptor Combo Camparison
 
-The table below shows the data collected while running the algorithms for different combinations of feature detectors and the BRIEF descriptor. Of all the descriptors used, the BRIEF descriptor was found to have the fastest execution time while achieving the maximum number of keypoint matches. The average times taken for feature detection and description for the ten (10) images are provided in the table for each combination. The average number of keypoints and keypoint matches are also listed. Brute Force matching (with Hamming Distance calculation) and k-nearest neighbour (k=2) were used for feature matching. Since the average number of keypoints and matches are the same, it is evident that this selection of algorithms for feature matching was able to find a corresponding match for each keypoint in a subsequent image. A ratio was calculated to rank the algorithm combinations. This ratio prioritizes speed in the detection and description processes while considering the number of keypoints to be processed. 
+The table below shows the data collected while running the algorithms for different combinations of feature detectors and the BRIEF descriptor. Of all the descriptors used, the BRIEF descriptor had the fastest execution time while achieving the maximum number of keypoint matches. The average times taken for feature detection and description for the ten (10) images are provided in the table for each combination. The average number of keypoints and keypoint matches are also listed. Brute Force matching (with Hamming Distance calculation) and k-nearest neighbour (k=2) were used for feature matching. Since the average number of keypoints and matches are the same, it is evident that this selection of algorithms for feature matching was able to find a corresponding match for each keypoint in a subsequent image. A ratio was calculated to rank the algorithm combinations. This ratio prioritizes speed in the detection and description processes while considering the number of keypoints to be processed. 
 
 Ratio = (Average Detection Time + Average Description Time)   /   (Average # of Keypoints + Average # of Matches)
 
@@ -33,6 +31,9 @@ The FAST-BRIEF combination is ranked highest since it has the fastest keypoint p
 
 ### SHI-TOMASI-BRIEF Feture Matching
 ![SHITOMASI-BRIEF](https://github.com/Anna-LeeMcLean/image_feature_tracking/assets/60242931/4a3c8fac-cfb5-491b-b76f-995009420aea)
+
+## Implementation 
+A data buffer was used to store the images to be processed in order to limit the required memory for the program. The circular buffer data structure from the boost library was used as the image buffer with a size of 2. Therefore, only the previous and current images are available at any time while the older images are pushed out as new ones enter. The feature detector and feature descriptor options are stored in interger enums for abstraction purposes. After detecting keypoints in an image, only keypoints that lie in a specific region of interest are kept. The region of interest is a rectangular bounding box which encloses the preceding vehicle of the ego car. The keypoints in the bounding box are then described an matched using the OpenCV algorithms listed in the introduction.
 
 ## Installation Instructions
 
